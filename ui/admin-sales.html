@@ -4,25 +4,37 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>관리자 - 매출 조회</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css">
+<link rel="stylesheet" href="css/design-system.css">
 </head>
 <body>
+<svg style="display:none">
+<symbol id="i-dashboard" viewBox="0 0 24 24"><rect width="7" height="9" x="3" y="3" rx="1"/><rect width="7" height="5" x="14" y="3" rx="1"/><rect width="7" height="9" x="14" y="12" rx="1"/><rect width="7" height="5" x="3" y="16" rx="1"/></symbol>
+<symbol id="i-folder" viewBox="0 0 24 24"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></symbol>
+<symbol id="i-utensils" viewBox="0 0 24 24"><path d="M3 3v7c0 1.1.9 2 2 2h2a2 2 0 0 0 2-2V3"/><path d="M5 12v9"/><path d="M19 3c-1.1 0-2 1.3-2 3v4c0 1.1.9 2 2 2s2-.9 2-2V6c0-1.7-.9-3-2-3Z"/><path d="M19 12v9"/></symbol>
+<symbol id="i-package" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="M3.29 7 12 12l8.71-5"/><line x1="12" y1="22" x2="12" y2="12"/></symbol>
+<symbol id="i-receipt" viewBox="0 0 24 24"><path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z"/><path d="M16 8h-6"/><path d="M16 12h-6"/><path d="M12 17h-2"/></symbol>
+<symbol id="i-trending-up" viewBox="0 0 24 24"><polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/><polyline points="16 7 22 7 22 13"/></symbol>
+<symbol id="i-clipboard" viewBox="0 0 24 24"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M12 11h4"/><path d="M12 16h4"/><path d="M8 11h.01"/><path d="M8 16h.01"/></symbol>
+<symbol id="i-logout" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+</svg>
 <div class="note">GET /api/admin/sales/daily / monthly / yearly</div>
 <div class="admin">
     <aside class="admin-sidebar">
-        <div class="brand">BURGER KIOSK</div>
+        <div class="brand"><svg class="icon"><use href="#i-utensils"/></svg>BURGER KIOSK</div>
         <nav>
-            <a href="admin-dashboard.html">대시보드</a>
+            <a href="admin-dashboard.html"><svg class="icon"><use href="#i-dashboard"/></svg>대시보드</a>
             <div class="group-label">메뉴 관리</div>
-            <a href="admin-categories.html">카테고리</a>
-            <a href="admin-menus.html">메뉴</a>
-            <a href="admin-inventory.html">재고</a>
+            <a href="admin-categories.html"><svg class="icon"><use href="#i-folder"/></svg>카테고리</a>
+            <a href="admin-menus.html"><svg class="icon"><use href="#i-utensils"/></svg>메뉴</a>
+            <a href="admin-inventory.html"><svg class="icon"><use href="#i-package"/></svg>재고</a>
             <div class="group-label">운영</div>
-            <a href="admin-orders.html">주문</a>
-            <a class="active" href="admin-sales.html">매출</a>
-            <a href="admin-audit-logs.html">감사 로그</a>
+            <a href="admin-orders.html"><svg class="icon"><use href="#i-receipt"/></svg>주문</a>
+            <a class="active" href="admin-sales.html"><svg class="icon"><use href="#i-trending-up"/></svg>매출</a>
+            <a href="admin-audit-logs.html"><svg class="icon"><use href="#i-clipboard"/></svg>감사 로그</a>
             <div class="group-label">계정</div>
-            <a href="admin-login.html">로그아웃</a>
+            <a href="admin-login.html"><svg class="icon"><use href="#i-logout"/></svg>로그아웃</a>
         </nav>
     </aside>
 
@@ -32,23 +44,27 @@
                 <h1>매출 조회</h1>
                 <div class="subtitle">status = COMPLETED인 주문만 집계</div>
             </div>
-            <div>admin</div>
+            <div class="admin-user"><div class="avatar">A</div>admin</div>
         </div>
 
         <div class="toolbar">
-            <button class="btn-admin small">일별</button>
-            <button class="btn-admin small">월별</button>
-            <button class="btn-admin small">연도별</button>
+            <div class="segmented">
+                <button class="active">일별</button>
+                <button>월별</button>
+                <button>연도별</button>
+            </div>
             <div class="spacer"></div>
             <input class="field-input" type="date" value="2026-07-08">
         </div>
 
-        <div class="kpi-grid" style="grid-template-columns: repeat(2,1fr);">
+        <div class="kpi-grid cols-2">
             <div class="kpi-card">
+                <div class="icon-badge"><svg class="icon"><use href="#i-trending-up"/></svg></div>
                 <div class="label">2026-07-08 총 매출</div>
-                <div class="value">152,300원</div>
+                <div class="value accent">152,300원</div>
             </div>
             <div class="kpi-card">
+                <div class="icon-badge"><svg class="icon"><use href="#i-receipt"/></svg></div>
                 <div class="label">주문 건수</div>
                 <div class="value">14건</div>
             </div>
@@ -58,12 +74,18 @@
             <div class="panel-header"><h2>일별 매출 상세 - 2026-07-08</h2></div>
             <div class="panel-body">
                 <table>
-                    <thead><tr><th>주문번호</th><th class="num">결제금액</th><th>주문시각</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th class="col-id">주문번호</th>
+                            <th class="col-amount">결제금액</th>
+                            <th class="col-text">주문시각</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>228</td><td class="num">27,700원</td><td>12:30:00</td></tr>
-                        <tr><td>227</td><td class="num">9,900원</td><td>12:24:00</td></tr>
-                        <tr><td>225</td><td class="num">7,100원</td><td>11:58:00</td></tr>
-                        <tr><td>224</td><td class="num">21,300원</td><td>11:47:00</td></tr>
+                        <tr><td class="col-id">228</td><td class="col-amount">27,700원</td><td class="col-text">12:30:00</td></tr>
+                        <tr><td class="col-id">227</td><td class="col-amount">9,900원</td><td class="col-text">12:24:00</td></tr>
+                        <tr><td class="col-id">225</td><td class="col-amount">7,100원</td><td class="col-text">11:58:00</td></tr>
+                        <tr><td class="col-id">224</td><td class="col-amount">21,300원</td><td class="col-text">11:47:00</td></tr>
                     </tbody>
                 </table>
             </div>
@@ -73,12 +95,18 @@
             <div class="panel-header"><h2>월별 매출 추이 - 2026년 7월</h2></div>
             <div class="panel-body">
                 <table>
-                    <thead><tr><th>날짜</th><th class="num">일 매출</th><th class="num">일 주문건수</th></tr></thead>
+                    <thead>
+                        <tr>
+                            <th class="col-text">날짜</th>
+                            <th class="col-amount">일 매출</th>
+                            <th class="col-amount">일 주문건수</th>
+                        </tr>
+                    </thead>
                     <tbody>
-                        <tr><td>2026-07-01</td><td class="num">98,000원</td><td class="num">9</td></tr>
-                        <tr><td>2026-07-02</td><td class="num">121,400원</td><td class="num">11</td></tr>
-                        <tr><td>2026-07-03</td><td class="num">87,300원</td><td class="num">8</td></tr>
-                        <tr><td>2026-07-08</td><td class="num">152,300원</td><td class="num">14</td></tr>
+                        <tr><td class="col-text">2026-07-01</td><td class="col-amount">98,000원</td><td class="col-amount">9</td></tr>
+                        <tr><td class="col-text">2026-07-02</td><td class="col-amount">121,400원</td><td class="col-amount">11</td></tr>
+                        <tr><td class="col-text">2026-07-03</td><td class="col-amount">87,300원</td><td class="col-amount">8</td></tr>
+                        <tr><td class="col-text">2026-07-08</td><td class="col-amount">152,300원</td><td class="col-amount">14</td></tr>
                     </tbody>
                 </table>
                 <div class="hint">월 합계 3,021,900원 / 총 210건</div>
