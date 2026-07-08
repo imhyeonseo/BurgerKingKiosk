@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 주문 관리</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/admin/orders &nbsp;/&nbsp; GET /api/admin/orders/{id} &nbsp;/&nbsp; PATCH .../cancel</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a href="admin-categories.html">카테고리</a>
+            <a href="admin-menus.html">메뉴</a>
+            <a href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a class="active" href="admin-orders.html">주문</a>
+            <a href="admin-sales.html">매출</a>
+            <a href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>주문 관리</h1>
+                <div class="subtitle">최신순 정렬 / 취소된 주문은 재고를 복구하지 않음</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>주문 목록</h2></div>
+            <div class="panel-body">
+                <div class="toolbar">
+                    <select class="field-input"><option>전체 상태</option><option>COMPLETED</option><option>CANCELLED</option></select>
+                    <div class="spacer"></div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>주문번호</th><th class="num">결제금액</th><th>상태</th><th>주문시각</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>228</td><td class="num">27,700원</td>
+                            <td><span class="tag">COMPLETED</span></td>
+                            <td>2026-07-08 12:30</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                        <tr>
+                            <td>227</td><td class="num">9,900원</td>
+                            <td><span class="tag">COMPLETED</span></td>
+                            <td>2026-07-08 12:24</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                        <tr>
+                            <td>226</td><td class="num">14,200원</td>
+                            <td><span class="tag">CANCELLED</span></td>
+                            <td>2026-07-08 12:10</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2>주문 상세 - #228</h2>
+                <button class="btn-admin">주문 취소</button>
+            </div>
+            <div class="panel-body">
+                <div class="form-grid" style="margin-bottom:4px;">
+                    <div><label>상태</label><div>COMPLETED</div></div>
+                    <div><label>세션 ID</label><div>b3c1e2b0-...</div></div>
+                    <div><label>주문 시각</label><div>2026-07-08 12:30:00</div></div>
+                    <div><label>총 결제금액</label><div>27,700원</div></div>
+                </div>
+
+                <table>
+                    <thead><tr><th>메뉴명</th><th class="num">단가</th><th class="num">수량</th><th class="num">소계</th></tr></thead>
+                    <tbody>
+                        <tr><td>와퍼 세트</td><td class="num">9,900원</td><td class="num">1</td><td class="num">9,900원</td></tr>
+                        <tr><td>치즈와퍼</td><td class="num">7,800원</td><td class="num">2</td><td class="num">15,600원</td></tr>
+                        <tr><td>콜라</td><td class="num">2,200원</td><td class="num">1</td><td class="num">2,200원</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

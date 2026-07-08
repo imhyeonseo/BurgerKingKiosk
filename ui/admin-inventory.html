@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 재고 관리</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/admin/inventory &nbsp;/&nbsp; PATCH /api/admin/inventory/{menuId}</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a href="admin-categories.html">카테고리</a>
+            <a href="admin-menus.html">메뉴</a>
+            <a class="active" href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a href="admin-orders.html">주문</a>
+            <a href="admin-sales.html">매출</a>
+            <a href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>재고 관리</h1>
+                <div class="subtitle">재고 수량은 이 화면에서만 변경 (메뉴 수정 API와 분리)</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>재고 현황</h2></div>
+            <div class="panel-body">
+                <div class="toolbar">
+                    <select class="field-input"><option>전체</option><option>품절만</option><option>판매 가능만</option></select>
+                    <div class="spacer"></div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>메뉴명</th><th>카테고리</th><th class="num">현재 재고</th><th>상태</th><th class="num">수정</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>와퍼</td><td>버거</td><td class="num">98</td>
+                            <td><span class="tag">판매 가능</span></td>
+                            <td class="num"><input class="field-input" type="number" value="98" style="width:80px;"> <button class="btn-admin small">저장</button></td>
+                        </tr>
+                        <tr>
+                            <td>치즈와퍼</td><td>버거</td><td class="num">40</td>
+                            <td><span class="tag">판매 가능</span></td>
+                            <td class="num"><input class="field-input" type="number" value="40" style="width:80px;"> <button class="btn-admin small">저장</button></td>
+                        </tr>
+                        <tr>
+                            <td>불고기버거</td><td>버거</td><td class="num">0</td>
+                            <td><span class="tag">품절</span></td>
+                            <td class="num"><input class="field-input" type="number" value="0" style="width:80px;"> <button class="btn-admin small">저장</button></td>
+                        </tr>
+                        <tr>
+                            <td>어니언링</td><td>사이드</td><td class="num">120</td>
+                            <td><span class="tag">판매 가능</span></td>
+                            <td class="num"><input class="field-input" type="number" value="120" style="width:80px;"> <button class="btn-admin small">저장</button></td>
+                        </tr>
+                        <tr>
+                            <td>콜라</td><td>음료</td><td class="num">3</td>
+                            <td><span class="tag">판매 가능</span></td>
+                            <td class="num"><input class="field-input" type="number" value="3" style="width:80px;"> <button class="btn-admin small">저장</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button class="active">1</button>
+                    <button>2</button>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

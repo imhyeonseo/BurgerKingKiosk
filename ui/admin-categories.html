@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 카테고리 관리</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET/POST/PUT/DELETE /api/admin/categories</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a class="active" href="admin-categories.html">카테고리</a>
+            <a href="admin-menus.html">메뉴</a>
+            <a href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a href="admin-orders.html">주문</a>
+            <a href="admin-sales.html">매출</a>
+            <a href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>카테고리 관리</h1>
+                <div class="subtitle">비활성 카테고리를 포함한 전체 목록</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2>카테고리 목록</h2>
+                <button class="btn-admin">카테고리 등록</button>
+            </div>
+            <div class="panel-body">
+                <table>
+                    <thead>
+                        <tr><th>노출순서</th><th>이름</th><th>소속 메뉴</th><th>상태</th><th>등록일</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td><td>버거</td><td>5건</td>
+                            <td><span class="tag">노출중</span></td>
+                            <td>2026-01-01</td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>2</td><td>사이드</td><td>3건</td>
+                            <td><span class="tag">노출중</span></td>
+                            <td>2026-01-01</td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>3</td><td>음료</td><td>4건</td>
+                            <td><span class="tag">노출중</span></td>
+                            <td>2026-01-01</td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>4</td><td>디저트</td><td>0건</td>
+                            <td><span class="tag">숨김</span></td>
+                            <td>2026-05-12</td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>카테고리 등록 / 수정</h2></div>
+            <div class="panel-body">
+                <div class="form-grid">
+                    <div>
+                        <label>카테고리명</label>
+                        <input type="text" value="디저트">
+                    </div>
+                    <div>
+                        <label>노출 순서</label>
+                        <input type="number" value="4">
+                    </div>
+                    <div class="full">
+                        <label>노출 여부</label>
+                        <select>
+                            <option>노출</option>
+                            <option>숨김</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="btn-admin">저장</button>
+                <div class="hint">소속된 메뉴(deleted_at IS NULL)가 1건이라도 있으면 삭제 시 409 CATEGORY_HAS_MENUS</div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

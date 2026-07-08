@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 대시보드</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/admin/dashboard</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a class="active" href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a href="admin-categories.html">카테고리</a>
+            <a href="admin-menus.html">메뉴</a>
+            <a href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a href="admin-orders.html">주문</a>
+            <a href="admin-sales.html">매출</a>
+            <a href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>대시보드</h1>
+                <div class="subtitle">오늘 매장 현황</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="label">오늘 매출</div>
+                <div class="value">152,300원</div>
+                <div class="delta">CANCELLED 제외</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">오늘 주문 건수</div>
+                <div class="value">14건</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">이번 달 매출</div>
+                <div class="value">3,021,900원</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">품절 메뉴 / 전체</div>
+                <div class="value">2 / 24</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2>최근 주문 5건</h2>
+                <a class="btn-admin small" href="admin-orders.html">전체 보기</a>
+            </div>
+            <div class="panel-body">
+                <table>
+                    <thead>
+                        <tr><th>주문번호</th><th>결제금액</th><th>상태</th><th>주문시각</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>228</td><td class="num">27,700원</td><td><span class="tag">COMPLETED</span></td><td>2026-07-08 12:30</td></tr>
+                        <tr><td>227</td><td class="num">9,900원</td><td><span class="tag">COMPLETED</span></td><td>2026-07-08 12:24</td></tr>
+                        <tr><td>226</td><td class="num">14,200원</td><td><span class="tag">CANCELLED</span></td><td>2026-07-08 12:10</td></tr>
+                        <tr><td>225</td><td class="num">7,100원</td><td><span class="tag">COMPLETED</span></td><td>2026-07-08 11:58</td></tr>
+                        <tr><td>224</td><td class="num">21,300원</td><td><span class="tag">COMPLETED</span></td><td>2026-07-08 11:47</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

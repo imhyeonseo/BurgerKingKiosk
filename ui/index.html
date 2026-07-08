@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키오스크 - 메뉴</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/categories &nbsp;/&nbsp; GET /api/categories/{id}/menus</div>
+<div class="kiosk">
+    <header class="kiosk-header">
+        <span class="side">BURGER KIOSK</span>
+        <a class="side right" href="cart.html">장바구니 (3)</a>
+    </header>
+
+    <nav class="tabs">
+        <a class="tab active" href="index.html">버거</a>
+        <a class="tab" href="#">사이드</a>
+        <a class="tab" href="#">음료</a>
+    </nav>
+
+    <main class="kiosk-body">
+        <div class="section-label">버거</div>
+        <div class="menu-grid">
+            <a class="menu-card" href="menu-detail.html">
+                <div class="placeholder">IMAGE</div>
+                <div class="tag-row"><span></span><span></span></div>
+                <div class="name">와퍼</div>
+                <div class="price">7,100원</div>
+            </a>
+
+            <a class="menu-card" href="menu-detail.html">
+                <div class="placeholder">IMAGE</div>
+                <div class="tag-row"><span></span><span></span></div>
+                <div class="name">치즈와퍼</div>
+                <div class="price">7,800원</div>
+            </a>
+
+            <a class="menu-card" href="#">
+                <div class="placeholder">IMAGE</div>
+                <div class="tag-row"><span>[품절]</span><span></span></div>
+                <div class="name">불고기버거</div>
+                <div class="price">4,500원</div>
+            </a>
+
+            <a class="menu-card" href="#">
+                <div class="placeholder">IMAGE</div>
+                <div class="tag-row"><span></span><span>[SET]</span></div>
+                <div class="name">와퍼 세트</div>
+                <div class="price">9,900원</div>
+            </a>
+
+            <a class="menu-card" href="#">
+                <div class="placeholder">IMAGE</div>
+                <div class="tag-row"><span></span><span>[SET]</span></div>
+                <div class="name">치즈와퍼 세트</div>
+                <div class="price">10,600원</div>
+            </a>
+        </div>
+    </main>
+
+    <div class="bottom-bar">
+        <a class="btn secondary">메뉴 검색</a>
+        <a class="btn" href="cart.html">장바구니 보기 (3)</a>
+    </div>
+</div>
+</body>
+</html>

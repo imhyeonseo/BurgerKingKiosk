@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 매출 조회</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/admin/sales/daily / monthly / yearly</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a href="admin-categories.html">카테고리</a>
+            <a href="admin-menus.html">메뉴</a>
+            <a href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a href="admin-orders.html">주문</a>
+            <a class="active" href="admin-sales.html">매출</a>
+            <a href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>매출 조회</h1>
+                <div class="subtitle">status = COMPLETED인 주문만 집계</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="toolbar">
+            <button class="btn-admin small">일별</button>
+            <button class="btn-admin small">월별</button>
+            <button class="btn-admin small">연도별</button>
+            <div class="spacer"></div>
+            <input class="field-input" type="date" value="2026-07-08">
+        </div>
+
+        <div class="kpi-grid" style="grid-template-columns: repeat(2,1fr);">
+            <div class="kpi-card">
+                <div class="label">2026-07-08 총 매출</div>
+                <div class="value">152,300원</div>
+            </div>
+            <div class="kpi-card">
+                <div class="label">주문 건수</div>
+                <div class="value">14건</div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>일별 매출 상세 - 2026-07-08</h2></div>
+            <div class="panel-body">
+                <table>
+                    <thead><tr><th>주문번호</th><th class="num">결제금액</th><th>주문시각</th></tr></thead>
+                    <tbody>
+                        <tr><td>228</td><td class="num">27,700원</td><td>12:30:00</td></tr>
+                        <tr><td>227</td><td class="num">9,900원</td><td>12:24:00</td></tr>
+                        <tr><td>225</td><td class="num">7,100원</td><td>11:58:00</td></tr>
+                        <tr><td>224</td><td class="num">21,300원</td><td>11:47:00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>월별 매출 추이 - 2026년 7월</h2></div>
+            <div class="panel-body">
+                <table>
+                    <thead><tr><th>날짜</th><th class="num">일 매출</th><th class="num">일 주문건수</th></tr></thead>
+                    <tbody>
+                        <tr><td>2026-07-01</td><td class="num">98,000원</td><td class="num">9</td></tr>
+                        <tr><td>2026-07-02</td><td class="num">121,400원</td><td class="num">11</td></tr>
+                        <tr><td>2026-07-03</td><td class="num">87,300원</td><td class="num">8</td></tr>
+                        <tr><td>2026-07-08</td><td class="num">152,300원</td><td class="num">14</td></tr>
+                    </tbody>
+                </table>
+                <div class="hint">월 합계 3,021,900원 / 총 210건</div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

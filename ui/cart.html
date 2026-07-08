@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키오스크 - 장바구니</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/carts &nbsp;/&nbsp; PATCH·DELETE /api/carts/items/{id} &nbsp;/&nbsp; POST /api/orders</div>
+<div class="kiosk">
+    <header class="kiosk-header">
+        <a class="side" href="index.html">뒤로</a>
+        <span>장바구니</span>
+        <span class="side right"></span>
+    </header>
+
+    <main class="kiosk-body">
+        <div class="cart-item">
+            <div class="placeholder">IMAGE</div>
+            <div class="meta">
+                <div class="top-row"><span>와퍼 세트</span><span>9,900원</span></div>
+                <div class="bottom-row">
+                    <div class="qty-row" style="width:110px;">
+                        <button>-</button><span>1</span><button>+</button>
+                    </div>
+                    <a href="#">빼기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-item">
+            <div class="placeholder">IMAGE</div>
+            <div class="meta">
+                <div class="top-row"><span>치즈와퍼</span><span>15,600원</span></div>
+                <div class="bottom-row">
+                    <div class="qty-row" style="width:110px;">
+                        <button>-</button><span>2</span><button>+</button>
+                    </div>
+                    <a href="#">빼기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-item" style="border-bottom:none;">
+            <div class="placeholder">IMAGE</div>
+            <div class="meta">
+                <div class="top-row"><span>콜라</span><span>2,200원</span></div>
+                <div class="bottom-row">
+                    <div class="qty-row" style="width:110px;">
+                        <button>-</button><span>1</span><button>+</button>
+                    </div>
+                    <a href="#">빼기</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="summary">
+            <div class="row"><span>상품 수</span><span>3종 / 4개</span></div>
+            <div class="row total"><span>총 결제금액</span><span>27,700원</span></div>
+        </div>
+
+        <div class="center-link"><a href="#">장바구니 비우기</a></div>
+    </main>
+
+    <div class="bottom-bar">
+        <a class="btn secondary" href="index.html">계속 담기</a>
+        <a class="btn" href="order-complete.html">주문하기 - 27,700원</a>
+    </div>
+</div>
+</body>
+</html>

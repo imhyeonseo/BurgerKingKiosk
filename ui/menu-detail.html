@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키오스크 - 메뉴 상세</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/menus/{menuId} &nbsp;/&nbsp; POST /api/carts/items</div>
+<div class="kiosk">
+    <header class="kiosk-header">
+        <a class="side" href="index.html">뒤로</a>
+        <span>메뉴 상세</span>
+        <a class="side right" href="cart.html">장바구니</a>
+    </header>
+
+    <main class="kiosk-body">
+        <div class="placeholder detail-hero">IMAGE</div>
+        <div class="detail-title">와퍼 세트</div>
+        <div class="detail-price">9,900원</div>
+        <div class="detail-desc">와퍼 + 어니언링 + 콜라로 구성된 세트 메뉴입니다.</div>
+
+        <div class="section-label">세트 구성</div>
+        <div class="list-box">
+            <div class="row"><span>와퍼</span><span>x1</span></div>
+            <div class="row"><span>어니언링</span><span>x1</span></div>
+            <div class="row"><span>콜라</span><span>x1</span></div>
+        </div>
+
+        <div class="section-label">수량</div>
+        <div class="qty-row">
+            <button>-</button>
+            <span>1</span>
+            <button>+</button>
+        </div>
+    </main>
+
+    <div class="bottom-bar">
+        <button class="btn">담기 - 9,900원</button>
+    </div>
+</div>
+</body>
+</html>

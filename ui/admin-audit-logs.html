@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 감사 로그</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/admin/audit-logs &nbsp;/&nbsp; GET /api/admin/audit-logs/{logId}</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a href="admin-categories.html">카테고리</a>
+            <a href="admin-menus.html">메뉴</a>
+            <a href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a href="admin-orders.html">주문</a>
+            <a href="admin-sales.html">매출</a>
+            <a class="active" href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>감사 로그</h1>
+                <div class="subtitle">관리자의 모든 쓰기 행위(POST/PUT/PATCH/DELETE)가 자동 기록됨</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>로그 목록</h2></div>
+            <div class="panel-body">
+                <div class="toolbar">
+                    <select class="field-input">
+                        <option>전체 액션</option>
+                        <option>MENU_CREATE</option>
+                        <option>MENU_UPDATE</option>
+                        <option>MENU_DELETE</option>
+                        <option>INVENTORY_UPDATE</option>
+                        <option>ORDER_CANCEL</option>
+                        <option>LOGIN / LOGOUT</option>
+                    </select>
+                    <input class="field-input" type="date" value="2026-07-01">
+                    <span>~</span>
+                    <input class="field-input" type="date" value="2026-07-08">
+                    <div class="spacer"></div>
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>관리자</th><th>액션</th><th>대상</th><th>대상 ID</th><th>IP</th><th>시각</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>admin</td><td><span class="tag">INVENTORY_UPDATE</span></td>
+                            <td>menu</td><td>10</td><td>127.0.0.1</td><td>2026-07-08 09:12</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                        <tr>
+                            <td>admin</td><td><span class="tag">MENU_CREATE</span></td>
+                            <td>menu</td><td>24</td><td>127.0.0.1</td><td>2026-07-08 09:00</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                        <tr>
+                            <td>admin</td><td><span class="tag">ORDER_CANCEL</span></td>
+                            <td>order</td><td>226</td><td>127.0.0.1</td><td>2026-07-08 12:11</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                        <tr>
+                            <td>admin</td><td><span class="tag">LOGIN</span></td>
+                            <td>admin</td><td>-</td><td>127.0.0.1</td><td>2026-07-08 08:55</td>
+                            <td><button class="btn-admin small">상세</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>로그 상세 - MENU_CREATE #501</h2></div>
+            <div class="panel-body">
+                <div class="form-grid" style="margin-bottom:10px;">
+                    <div><label>관리자</label><div>admin</div></div>
+                    <div><label>액션</label><div>MENU_CREATE</div></div>
+                    <div><label>대상</label><div>menu #24</div></div>
+                    <div><label>시각</label><div>2026-07-08 09:00:00</div></div>
+                </div>
+                <div class="form-grid">
+                    <div class="full">
+                        <label>before_value</label>
+                        <div class="code-box">null</div>
+                    </div>
+                    <div class="full">
+                        <label>after_value</label>
+                        <div class="code-box">{
+  "id": 24,
+  "name": "치즈스틱",
+  "price": 3500,
+  "categoryId": 2
+}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

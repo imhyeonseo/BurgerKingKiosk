@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 - 메뉴 관리</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">GET /api/admin/menus &nbsp;/&nbsp; POST /api/admin/menus(/sets) &nbsp;/&nbsp; 세트 구성 2단계 등록</div>
+<div class="admin">
+    <aside class="admin-sidebar">
+        <div class="brand">BURGER KIOSK</div>
+        <nav>
+            <a href="admin-dashboard.html">대시보드</a>
+            <div class="group-label">메뉴 관리</div>
+            <a href="admin-categories.html">카테고리</a>
+            <a class="active" href="admin-menus.html">메뉴</a>
+            <a href="admin-inventory.html">재고</a>
+            <div class="group-label">운영</div>
+            <a href="admin-orders.html">주문</a>
+            <a href="admin-sales.html">매출</a>
+            <a href="admin-audit-logs.html">감사 로그</a>
+            <div class="group-label">계정</div>
+            <a href="admin-login.html">로그아웃</a>
+        </nav>
+    </aside>
+
+    <main class="admin-main">
+        <div class="admin-topbar">
+            <div>
+                <h1>메뉴 관리</h1>
+                <div class="subtitle">단품/세트 메뉴 등록 및 관리 (재고 수정은 재고 관리 메뉴 이용)</div>
+            </div>
+            <div>admin</div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header">
+                <h2>메뉴 목록</h2>
+                <div>
+                    <button class="btn-admin">세트 메뉴 등록</button>
+                    <button class="btn-admin">단품 메뉴 등록</button>
+                </div>
+            </div>
+            <div class="panel-body">
+                <div class="toolbar">
+                    <select class="field-input"><option>전체 카테고리</option><option>버거</option><option>사이드</option><option>음료</option></select>
+                    <select class="field-input"><option>전체(단품/세트)</option><option>단품만</option><option>세트만</option></select>
+                    <select class="field-input"><option>전체 상태</option><option>판매중</option><option>숨김</option></select>
+                    <div class="spacer"></div>
+                    <input class="field-input" placeholder="메뉴명 검색">
+                </div>
+
+                <table>
+                    <thead>
+                        <tr><th>이름</th><th>카테고리</th><th>구분</th><th class="num">가격</th><th class="num">재고</th><th>상태</th><th></th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>와퍼</td><td>버거</td><td>단품</td>
+                            <td class="num">7,100원</td><td class="num">98</td>
+                            <td><span class="tag">판매중</span></td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>치즈와퍼</td><td>버거</td><td>단품</td>
+                            <td class="num">7,800원</td><td class="num">40</td>
+                            <td><span class="tag">판매중</span></td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>불고기버거</td><td>버거</td><td>단품</td>
+                            <td class="num">4,500원</td><td class="num">0</td>
+                            <td><span class="tag">품절</span></td>
+                            <td><button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>와퍼 세트</td><td>버거</td><td>세트</td>
+                            <td class="num">9,900원</td><td class="num">50</td>
+                            <td><span class="tag">판매중</span></td>
+                            <td><button class="btn-admin small">구성품</button> <button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                        <tr>
+                            <td>치즈와퍼 세트</td><td>버거</td><td>세트</td>
+                            <td class="num">10,600원</td><td class="num">50</td>
+                            <td><span class="tag">판매중</span></td>
+                            <td><button class="btn-admin small">구성품</button> <button class="btn-admin small">수정</button> <button class="btn-admin small">삭제</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <button class="active">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel">
+            <div class="panel-header"><h2>세트 메뉴 구성 관리 - 와퍼 세트</h2></div>
+            <div class="panel-body">
+                <table>
+                    <thead><tr><th>구성 단품</th><th class="num">수량</th><th></th></tr></thead>
+                    <tbody>
+                        <tr><td>와퍼</td><td class="num">1</td><td><button class="btn-admin small">제거</button></td></tr>
+                        <tr><td>어니언링</td><td class="num">1</td><td><button class="btn-admin small">제거</button></td></tr>
+                        <tr><td>콜라</td><td class="num">1</td><td><button class="btn-admin small">제거</button></td></tr>
+                    </tbody>
+                </table>
+
+                <div class="toolbar" style="margin-top:16px;">
+                    <select class="field-input"><option>추가할 단품 메뉴 선택</option><option>불고기버거</option><option>어니언링</option><option>콜라</option></select>
+                    <input class="field-input" type="number" value="1" style="width:70px;">
+                    <button class="btn-admin">구성품 추가</button>
+                </div>
+                <div class="hint">Step 1: POST /api/admin/menus/sets → Step 2: POST /api/admin/menus/sets/{setMenuId}/components 반복 호출</div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

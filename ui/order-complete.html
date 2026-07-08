@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>키오스크 - 주문 완료</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="note">POST /api/orders 응답 (order_number 101부터 시작)</div>
+<div class="kiosk">
+    <header class="kiosk-header">
+        <span class="side"></span>
+        <span>주문 완료</span>
+        <span class="side right"></span>
+    </header>
+
+    <main class="kiosk-body">
+        <div class="center-block">
+            <div class="circle">V</div>
+            <div>주문이 완료되었습니다</div>
+            <div style="font-size:12px; margin-top:6px;">화면의 번호가 호출되면 카운터에서 수령해주세요</div>
+
+            <div class="order-number-box">
+                <div class="label">주문 번호</div>
+                <div class="number">228</div>
+            </div>
+
+            <div class="receipt">
+                <div class="row"><span>와퍼 세트 x1</span><span>9,900원</span></div>
+                <div class="row"><span>치즈와퍼 x2</span><span>15,600원</span></div>
+                <div class="row"><span>콜라 x1</span><span>2,200원</span></div>
+                <div class="row total"><span>총 결제금액</span><span>27,700원</span></div>
+            </div>
+        </div>
+    </main>
+
+    <div class="bottom-bar">
+        <a class="btn" href="index.html">처음 화면으로</a>
+    </div>
+</div>
+</body>
+</html>
