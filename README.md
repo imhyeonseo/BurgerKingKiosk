@@ -27,7 +27,7 @@
 
 ---
 
-## 🛠 기술 스택 (Tech Stack)
+## 기술 스택 (Tech Stack)
 
 ### 백엔드
 
@@ -59,7 +59,7 @@
 
 ---
 
-## 📂 프로젝트 구조 (Project Structure)
+## 프로젝트 구조 (Project Structure)
 
 ```
 Kiosk/
