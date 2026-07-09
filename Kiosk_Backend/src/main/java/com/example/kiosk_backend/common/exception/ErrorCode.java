@@ -15,6 +15,9 @@ public enum ErrorCode {
     NOT_A_SET_MENU(HttpStatus.BAD_REQUEST, "세트 메뉴가 아닙니다."),
     COMPONENT_MUST_BE_SINGLE_ITEM(HttpStatus.BAD_REQUEST, "세트 구성품은 단품 메뉴여야 합니다."),
     SELF_REFERENCE_NOT_ALLOWED(HttpStatus.BAD_REQUEST, "자기 자신을 구성품으로 추가할 수 없습니다."),
+    EMPTY_FILE(HttpStatus.BAD_REQUEST, "업로드할 파일이 비어 있습니다."),
+    INVALID_IMAGE_FILE(HttpStatus.BAD_REQUEST, "이미지 파일(JPG, PNG, WEBP)만 업로드할 수 있습니다."),
+    FILE_TOO_LARGE(HttpStatus.BAD_REQUEST, "파일 크기는 5MB를 초과할 수 없습니다."),
 
     INVALID_CREDENTIALS(HttpStatus.UNAUTHORIZED, "아이디 또는 비밀번호가 올바르지 않습니다."),
     UNAUTHORIZED(HttpStatus.UNAUTHORIZED, "인증이 필요합니다."),
@@ -28,6 +31,7 @@ public enum ErrorCode {
     ORDER_NOT_FOUND(HttpStatus.NOT_FOUND, "주문을 찾을 수 없습니다."),
     SET_COMPONENT_NOT_FOUND(HttpStatus.NOT_FOUND, "세트 구성품을 찾을 수 없습니다."),
     AUDIT_LOG_NOT_FOUND(HttpStatus.NOT_FOUND, "감사 로그를 찾을 수 없습니다."),
+    IMAGE_NOT_FOUND(HttpStatus.NOT_FOUND, "이미지를 찾을 수 없습니다."),
 
     CATEGORY_NAME_DUPLICATE(HttpStatus.CONFLICT, "이미 존재하는 카테고리명입니다."),
     CATEGORY_HAS_MENUS(HttpStatus.CONFLICT, "소속된 메뉴가 있어 삭제할 수 없습니다."),

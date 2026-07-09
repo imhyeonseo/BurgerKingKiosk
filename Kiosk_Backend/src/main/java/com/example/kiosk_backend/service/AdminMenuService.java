@@ -25,6 +25,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 /** 관리자 메뉴 관리 — /api/admin/menus (단품/세트 CRUD, 세트 구성 관리) */
 @Service
@@ -36,6 +37,7 @@ public class AdminMenuService {
     private final CategoryRepository categoryRepository;
     private final SetMenuItemRepository setMenuItemRepository;
     private final AuditLogRecorder auditLogRecorder;
+    private final ImageStorageService imageStorageService;
 
     @Transactional(readOnly = true)
     public PageResponse<AdminMenuListItemResponse> getMenus(Long categoryId, Boolean isSet, Boolean isActive, Pageable pageable) {
@@ -58,21 +60,27 @@ public class AdminMenuService {
         return AdminMenuDetailResponse.of(menu, setComponents);
     }
 
-    public AdminMenuDetailResponse createMenu(MenuCreateRequest request) {
-        return createMenu(request, false);
+    public AdminMenuDetailResponse createMenu(MenuCreateRequest request, MultipartFile image) {
+        return createMenu(request, image, false);
     }
 
-    public AdminMenuDetailResponse createSetMenu(MenuCreateRequest request) {
-        return createMenu(request, true);
+    public AdminMenuDetailResponse createSetMenu(MenuCreateRequest request, MultipartFile image) {
+        return createMenu(request, image, true);
     }
 
-    private AdminMenuDetailResponse createMenu(MenuCreateRequest request, boolean isSet) {
+    private AdminMenuDetailResponse createMenu(MenuCreateRequest request, MultipartFile image, boolean isSet) {
         Category category = categoryRepository.findById(request.categoryId())
                 .orElseThrow(() -> new BusinessException(ErrorCode.CATEGORY_NOT_FOUND));
 
+        // 이미지 파일이 함께 첨부되면 그것을 우선 저장해 URL을 발급하고,
+        // 파일이 없으면 요청 본문의 imageUrl(기존 URL 재사용 또는 null)을 그대로 쓴다.
+        String imageUrl = (image != null && !image.isEmpty())
+                ? imageStorageService.store(image)
+                : request.imageUrl();
+
         Menu menu = menuRepository.save(new Menu(
                 category, request.name(), request.description(), request.price(),
-                request.imageUrl(), isSet, request.quantity()
+                imageUrl, isSet, request.quantity()
         ));
 
         AdminMenuDetailResponse response = AdminMenuDetailResponse.of(menu, isSet ? List.of() : null);
@@ -128,12 +136,28 @@ public class AdminMenuService {
     public void deleteMenu(Long menuId) {
         Menu menu = getMenuOrThrow(menuId);
 
-        List<SetMenuItem> usages = setMenuItemRepository.findByComponentMenuId(menuId);
-        if (!usages.isEmpty()) {
-            String setMenuNames = usages.stream().map(u -> u.getSetMenu().getName()).distinct()
-                    .reduce((a, b) -> a + ", " + b).orElse("");
-            throw new BusinessException(ErrorCode.MENU_IN_USE_AS_SET_COMPONENT,
-                    "다음 세트 메뉴에서 사용 중입니다: " + setMenuNames);
+        // 단품 삭제 시: 아직 살아있는 세트 구성품 참조가 있으면 막는다
+        if (!Boolean.TRUE.equals(menu.getIsSet())) {
+            List<SetMenuItem> usages = setMenuItemRepository.findByComponentMenuId(menuId);
+            // 소프트 딜리트된 세트(deletedAt != null)의 참조는 무시한다
+            List<SetMenuItem> activeUsages = usages.stream()
+                    .filter(u -> u.getSetMenu().getDeletedAt() == null)
+                    .toList();
+            if (!activeUsages.isEmpty()) {
+                String setMenuNames = activeUsages.stream().map(u -> u.getSetMenu().getName()).distinct()
+                        .reduce((a, b) -> a + ", " + b).orElse("");
+                throw new BusinessException(ErrorCode.MENU_IN_USE_AS_SET_COMPONENT,
+                        "다음 세트 메뉴에서 사용 중입니다: " + setMenuNames);
+            }
+            // 이미 삭제된 세트의 dangling 참조는 함께 정리
+            setMenuItemRepository.deleteAll(usages);
+        }
+
+        // 세트 메뉴 삭제 시: 구성품 연결 레코드를 먼저 삭제해야
+        // 이후 단품 삭제 시 "세트에 포함됨" 체크에 걸리지 않는다
+        if (Boolean.TRUE.equals(menu.getIsSet())) {
+            List<SetMenuItem> components = setMenuItemRepository.findBySetMenuId(menuId);
+            setMenuItemRepository.deleteAll(components);
         }
 
         AdminMenuDetailResponse before = getMenuDetail(menuId);
